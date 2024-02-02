@@ -1,0 +1,339 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+#cvPlayGround {
+    font-family: 'Inter', sans-serif;
+}
+
+.hidden {
+    display: none;
+}
+
+h1 {
+    @apply text-3xl
+}
+
+h2 {
+    @apply text-2xl
+}
+
+h3 {
+    @apply text-xl
+}
+
+h4 {
+    @apply text-lg
+}
+
+h5 {
+    @apply text-base
+}
+
+h6 {
+    @apply text-sm
+}
+
+p, ul {
+    font-size: 16px;
+}
+
+#cvCanvas {
+    touch-action: auto;
+}
+
+[contenteditable=true] {
+    border: 2px solid transparent;
+    outline: 2px solid transparent;
+    outline-offset: 2px;
+    width: fit-content;
+}
+
+[contenteditable=true]:focus {
+    @apply border-blue-600;
+}
+
+[contenteditable="true"]:empty {
+    height: 0;
+    width: 0;
+}
+
+[contenteditable=true][placeholder]:empty {
+    height: unset !important;
+    width: unset !important;
+}
+
+[contenteditable=true][placeholder]:empty:before {
+    content: attr(placeholder);
+    @apply text-gray-700;
+}
+
+.title-group {
+    @apply border-0 border-b border-gray-300 w-full leading-6 pb-2.5
+}
+
+:not(.col-span-2)>.sortable-list .title-group {
+    @apply text-2xl;
+}
+
+/* group edit */
+
+.group-edit {
+    position: relative;
+    /* cursor: move; */
+    @apply border-2 border-transparent border-dashed hover:border-gray-200 py-2 pr-4;
+}
+
+#pasPhoto.group-edit {
+    padding-right: 0;
+}
+
+.group-edit .button-edit {
+    transition: all 1s cubic-bezier(0.075, 0.82, 0.165, 1);
+    margin-top: 16px;
+    margin-bottom: 16px;
+}
+
+.group-edit>.button-move {
+    cursor: move;
+}
+
+.group-edit .button-move,
+.group-edit .button-delete {
+    width: 30px;
+    height: 30px;
+    position: absolute;
+    top: 5px;
+    right: -6px;
+    padding: unset;
+    border-radius: 50px;
+}
+
+.group-edit:hover .button-edit {}
+
+.group-edit [contenteditable="true"] {
+    cursor: text;
+}
+
+.group-edit-list {
+    padding-right: 0;
+    padding-left: 0;
+    padding-top: 0px;
+    margin-left: -2px;
+    position: relative;
+}
+
+.group-edit-list .edit-list-tool {
+    visibility: hidden;
+    position: absolute;
+    flex-direction: row;
+    right: -15px;
+    top: 50%;
+    transform: translateY(-50%);
+    @apply flex gap-3
+}
+
+.group-edit-list:hover .edit-list-tool, .group-edit-list:focus .edit-list-tool {
+    visibility: visible;
+}
+
+.group-edit-list .button-move,
+.group-edit-list .button-delete {
+    position: relative;
+    @apply bg-amber-500 focus:ring-amber-200 text-slate-900
+}
+
+.dragSection {
+    border-left: 4px solid;
+    @apply border-blue-400 hover:border-blue-400 bg-gray-100 p-4;
+}
+
+/* list */
+
+ul {
+    list-style-type: disc;
+    padding-left: 1rem;
+}
+
+ul.list-timeline {
+    list-style: none;
+}
+
+ul.list-timeline > li {
+    position: relative;
+    padding: 0 10px;
+}
+
+ul.list-timeline > li:before {
+    content: '';
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    position: absolute;
+    left: -13px;
+    top: 8px;
+    z-index: 50;
+    @apply bg-blue-500
+}
+
+ul.list-timeline > li:not(:last-child):after {
+    content: '';
+    width: 2px;
+    height: calc(100% + 32px);
+    background: #D8D8D8;
+    position: absolute;
+    left: -8px;
+    top: 8px;
+}
+
+/* badge */
+
+.badge {
+    position: relative;
+}
+
+.badge .button-delete {
+    position: absolute;
+    top: -9px;
+    right: -9px;
+    width: 16px;
+    height: 16px;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    @apply bg-amber-500 text-slate-900 text-center
+}
+
+.badge span[placeholder]:empty:before {
+    @apply text-white opacity-70
+}
+
+/* medium editor */
+.medium-editor-toolbar {
+    box-shadow: rgba(0, 0, 0, 0.09) 0px 0px 6px 4px;
+    border-radius: 8px;
+    background: #fff;
+}
+
+.medium-editor-placeholder:after {
+    display: none;
+}
+
+.medium-editor-element {
+    min-height: unset;
+}
+
+/*
+ * FilePond Custom Styles
+ */
+
+.filepond--drop-label {
+    color: #4c4e53;
+}
+
+.filepond--label-action {
+    text-decoration-color: #babdc0;
+}
+
+.filepond--panel-root {
+    background-color: #edf0f4;
+}
+
+.filepond--file .filepond--file-action-button {
+    display: none;
+}
+
+.filepond--file:hover .filepond--file-action-button {
+    display: block;
+}
+
+.filepond--root {
+    width: 100%;
+    margin: 0 auto;
+}
+
+.filepond--image-preview-wrapper .filepond--image-preview-overlay-idle {
+    opacity: 0 !important;
+}
+
+.filepond--image-preview-wrapper:hover .filepond--image-preview-overlay-idle {
+    opacity: 1 !important;
+}
+
+/* Preview Mode */
+
+.preview-mode .group-edit {
+    @apply hover:border-transparent
+}
+
+.preview-mode .group-edit:hover .button-edit {
+    @apply hidden
+}
+
+/* Hamburger Menu */
+.hamburger {
+    cursor: pointer;
+    width: 24px;
+    height: 24px;
+    transition: all .25s;
+    position: relative;
+    margin-left: auto;
+    ;
+}
+
+.hamburger-top,
+.hamburger-middle,
+.hamburger-bottom {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 24px;
+    height: 2px;
+    background-color: #000;
+    transition: all .5s;
+}
+
+.hamburger-middle {
+    transform: translateY(7px);
+}
+
+.hamburger-bottom {
+    transform: translateY(14px);
+}
+
+.open {
+    transform: rotate(90deg);
+    transform: translateY(0px);
+}
+
+.open .hamburger-top {
+    transform: rotate(45deg) translateY(6px) translate(6px);
+}
+
+.open .hamburger-middle {
+    display: none;
+}
+
+.open .hamburger-bottom {
+    transform: rotate(-45deg) translateY(6px) translate(-6px);
+}
+
+/* Responsive */
+
+@media screen and (min-width: 977px) {
+    .group-edit>.button-move {
+        visibility: hidden;
+    }
+
+    .group-edit:hover>.button-move {
+        visibility: visible;
+    }
+
+    .group-edit .button-edit {
+        display: none;
+    }
+
+    .group-edit:hover .button-edit {
+        display: flex;
+    }
+}
